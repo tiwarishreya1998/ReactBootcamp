@@ -4,4 +4,5 @@ export const ADD='ADD';
 export const SUBTRACT='SUBTRACT';
 export const STORE_RESULT='STORE_RESULT';
 export const DELETE_RESULT='DELETE_RESULT';
-// outsources our action tyope for avoiding errors
+// outsourceing  our action type for avoiding errors
+

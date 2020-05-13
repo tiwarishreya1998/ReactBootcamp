@@ -1,4 +1,6 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actionTypes';
+import {updateObject} from '../utility';
+
 
 const initialState ={
     counter:0
@@ -9,42 +11,22 @@ const reducer =(state=initialState,action) =>{
 
     switch(action.type){
         case actionTypes.INCREMENT:
-            const newState=Object.assign({},state);// clones the state, not a deep clone.
-            newState.counter=state.counter+1;
-            return newState;
+            return updateObject(state,{counter:state.counter+1})
 
         case actionTypes.DECREMENT:
-            return{
-                ...state,
-                counter:state.counter-1
-                   }
+            return updateObject(state,{counter:state.counter-1})
+
         case actionTypes.ADD:
-            return{
-                ...state,
-                counter:state.counter+action.val
-                 }
+            return updateObject(state,{counter:state.counter+action.val})
 
         case actionTypes.SUBTRACT:
-            return{
-                ...state,
-               counter:state.counter-action.val
-            }
-        // case actionTypes.STORE_RESULT :   
-        //     return{
-        //         ...state,
-        //         results:state.results.concat({id:new Date(),value:state.counter})
-
-        //     }
-        // case actionTypes.DELETE_RESULT:
-        //     // 2.const id=2;
-        //     // const newArray=[...state.results];
-        //     // newArray.splice(id,1)
-        //    //1. but mutable:= state.results.splice(id,1) //(result,index)=>index!==id
-        //    const updatedArray=state.results.filter(result=>result.id!==action.resultElId);
-        //     return{
-        //         ...state,
-        //         results:updatedArray
-        //     }
+            return updateObject(state,{counter:state.counter-action.val})
+            // return{
+            //     ...state,
+            //    counter:state.counter-action.val
+            // }
+   
+    
     }
 
 
