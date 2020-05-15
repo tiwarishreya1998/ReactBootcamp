@@ -16,7 +16,7 @@ export const purchaseBurgerFail=(error)=>{
         type:actionTypes.PURCHASED_BURGER_FAIL,
         error:error
     };
-};
+}
 
 export const purchaseBurgerStart=()=>{
     return{
@@ -78,12 +78,13 @@ export const fetchOrders=(token,userId)=>{
                    {...res.data[key],
                     id:key });
             }
+            //console.log(fetchedOrders);
             dispatch(fetchOrdersSuccess(fetchedOrders));
            
             
         }).catch(err=>{
             dispatch(fetchOrdersFail(err))
            
-    });
-    }
-}
+         });
+    };
+};
