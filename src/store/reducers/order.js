@@ -13,22 +13,27 @@ const purchasedInit=(state,action)=>{
     return updateObject(state,{purchased:false});
 };
 const purchasedBurgerStart=(state,action)=>{
-    return updateObject(state,{loading:true});
+    return updateObject(state,{loading:false});
 };
 const purchasedBurgerFail=(state,action)=>{
     return updateObject(state,{loading:false});
 };
-const fetchOrdersStart=(state,action)=>{
-    return updateObject(state,{loading:true});
-};
-const purchasedOrderSuccess=(state,action)=>{
-    const newOrder= updateObject(action.orderData,{is:action.orderId})
-    return updateObject(state,{loading:false,
+
+const purchasedBurgerSuccess=(state,action)=>{
+    const newOrder= updateObject(action.orderData,{id:action.orderId})
+    return updateObject(state,{
+        loading:false,
        purchased:true,
        orders:state.orders.concat(newOrder)})
 };
+
+const fetchOrdersStart=(state,action)=>{
+    return updateObject(state,{loading:true});
+};
 const fetchOrdersSuccess=(state,action)=>{
-    return updateObject(state,{orders:action.orders,loading:false});
+    return updateObject(state,{
+        orders:action.orders,
+        loading:false});
 };
 const fetchOrdersFail=(state,action)=>{
     return updateObject(state,{loading:false});
@@ -37,7 +42,7 @@ const fetchOrdersFail=(state,action)=>{
 
 const reducer=(state=initialState,action)=>{
     switch(action.type){
-        case actionTypes.PURCHASED_BURGER_SUCCESS:return purchasedOrderSuccess(state,action);
+        case actionTypes.PURCHASED_BURGER_SUCCESS:return purchasedBurgerSuccess(state,action);
 
         case actionTypes.PURCHASED_BURGER_FAIL:return purchasedBurgerFail(state,action);
             

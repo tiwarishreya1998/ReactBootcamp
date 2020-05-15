@@ -72,8 +72,15 @@ class BurgerBuilder extends Component{
     // }
 
     purchaseHandler=()=>{
+        if(this.props.isAuthenticated){
         this.setState({purchasing:true});
+        }
+        else{
+            this.props.onSetAuthRedirectPath('/checkout');
+            this.props.history.push('/auth');
+        }
     }
+
 
 
     purchaseCancelHandler=()=>{
@@ -114,14 +121,14 @@ class BurgerBuilder extends Component{
             burger=(
              <Aux>
                 <Burger ingredients={this.props.ings}/>
-                <BuildControls
-                
+                <BuildControls                
                     ingredientAdded={this.props.onIngredientAdded}
                     ingredientRemoved={this.props.onIngredientRemoved}
                     disabled={disabledInfo}
                     purchasable={this.updatePurchaseState(this.props.ings)}
                     ordered={this.purchaseHandler}
-                    price={this.props.price}/>
+                    price={this.props.price}
+                    isAuth={this.props.isAuthenticated}/>
             </Aux>);
                 orderSummary=<OrderSummary 
                     ingredients={this.props.ings}
@@ -151,7 +158,8 @@ class BurgerBuilder extends Component{
         return{
             ings:state.burgerBuilder.ingredients,
             price:state.burgerBuilder.totalPrice,
-            error:state.burgerBuilder.error
+            error:state.burgerBuilder.error,
+            isAuthenticated:state.auth.token!==null
         };
     }
     const mapDispatchToProps=dispatch=>{
@@ -159,7 +167,8 @@ class BurgerBuilder extends Component{
             onIngredientAdded:(ingName)=>dispatch(actions.addIngredient(ingName)),
             onIngredientRemoved:(ingName)=>dispatch(actions.removeIngredient(ingName)),
             onInitIngredients:()=>dispatch(actions.initIngredients()),
-            onInitPurchased:()=>dispatch(actions.purchaseInit())
+            onInitPurchased:()=>dispatch(actions.purchaseInit()),
+            onSetAuthRedirectPath:(path)=>dispatch(actions.setAuthRedirectPath(path))
         }
     }
 
