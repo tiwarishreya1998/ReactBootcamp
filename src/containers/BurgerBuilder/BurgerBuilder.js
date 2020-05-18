@@ -10,7 +10,7 @@ import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
 import axios from '../../axios-order';
 
-class BurgerBuilder extends Component{
+export class BurgerBuilder extends Component{
 
     // constructor(props){
     //     super(props);
@@ -23,7 +23,7 @@ class BurgerBuilder extends Component{
 
     }
     componentDidMount(){
-        console.log(this.props);
+        //console.log(this.props);
         this.props.onInitIngredients();
         
     }
@@ -84,7 +84,7 @@ class BurgerBuilder extends Component{
 
 
     purchaseCancelHandler=()=>{
-        this.props.onInitPurchased();
+       // this.props.onInitPurchased();
         this.setState({purchasing:false});
 
     }
@@ -132,7 +132,7 @@ class BurgerBuilder extends Component{
             </Aux>);
                 orderSummary=<OrderSummary 
                     ingredients={this.props.ings}
-                    price={this.props.price.toFixed(2)}
+                    price={this.props.price}
                     purchaseCancelled={this.purchaseCancelHandler}
                     purchaseContinued={this.purchaseContinueHandler}
                     />
