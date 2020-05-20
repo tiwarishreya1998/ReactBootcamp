@@ -16,14 +16,12 @@ export default httpClient=>{
     
         useEffect(()=>{
             return()=>{
-
-
             //console.log('will unmount',this.reqInterceptor,this.resInterceptor);
             httpClient.interceptors.request.eject(reqInterceptor);
             httpClient.interceptors.response.eject(resInterceptor);
             };
           
-        },[reqInterceptor,resInterceptor]);
+        },[httpClient.interceptors.request,httpClient.interceptors.response,reqInterceptor,resInterceptor]);
 
         const errorConfirmedHandler=()=>{
             setError(null);
