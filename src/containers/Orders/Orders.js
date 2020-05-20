@@ -8,12 +8,16 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 
 const Orders=props=>{
 
-        const { onFetchOrder} = props;
+        // const { onFetchOrder} = props;
 
-        useEffect(()=>{
-            onFetchOrder(props.token,props.userId);
-        },[onFetchOrder]);
+        // useEffect(()=>{
+        //     onFetchOrder(props.token,props.userId);
+        // },[onFetchOrder]);
 
+        const { onFetchOrder , token, userId} = props;
+            useEffect(() => {
+            onFetchOrder(token,userId);
+            }, [onFetchOrder,token,userId]);
 
         
             let orders=<Spinner/>;
