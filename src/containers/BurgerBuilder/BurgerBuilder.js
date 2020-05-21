@@ -78,7 +78,7 @@ export const BurgerBuilder=props=>{
         };
         for(let key in disabledInfo)
         {
-            disabledInfo[key]=disabledInfo[key] <= 0; //this check here returns true or false
+            disabledInfo[key]=disabledInfo[key] <= 0; 
         }
 
         let orderSummary=null;
@@ -104,11 +104,6 @@ export const BurgerBuilder=props=>{
                     purchaseContinued={purchaseContinueHandler}
                     />
         }
-        // if(this.state.loading){
-        //     orderSummary=<Spinner/>;
-        // }
-
-        //{salad:true,meat:false}
         return(    
             <Aux>
                 <Modal show={purchasing} modalClosed={purchaseCancelHandler}>

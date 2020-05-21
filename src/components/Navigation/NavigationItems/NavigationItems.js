@@ -10,7 +10,7 @@ import NavigationItem from './NavigationItem/NavigationItem';
         {props.isAuthenticated?<NavigationItem link="/orders">Orders</NavigationItem>:null}
 
         {!props.isAuthenticated ?
-            <NavigationItem link="/auth">Authenticate</NavigationItem>
+            <NavigationItem link="/auth">Signin/Signout</NavigationItem>
             : <NavigationItem link="/logout">Logout</NavigationItem>}
      </ul>
  );

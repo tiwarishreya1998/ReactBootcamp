@@ -36,21 +36,21 @@
 }
 
 .BuildControl .Less {  
-    background-color: #D39952;
+    background-color: rgb(36, 58, 160);
     color: white;
 }
 
 .BuildControl .More {
-    background-color: #8F5E1E;
+    background-color: rgb(38, 30, 143);
     color: white;
 }
 
 .BuildControl .Less:hover, .BuildControl .Less:active {  
-    background-color: #DAA972;
-    color: white;
+    background-color: rgb(66, 202, 180);
+    color: black;
 }
 
 .BuildControl .More:hover,.BuildControl .More:active {
-    background-color: #99703F;
-    color: white;
+    background-color: rgb(66, 202, 180);
+    color: black;
 }
