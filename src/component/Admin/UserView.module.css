@@ -1,0 +1,100 @@
+/* .UserView {
+    margin: 50px auto;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .UserView h4 {
+    margin: auto;
+    color: rgb(255, 255, 255);
+    width: 783px;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #2E4158;
+  }
+  
+  @media (min-width: 600px) {
+    .UserView,
+    .UserView table,
+    .UserView h2,
+    .UserView h4,
+    .UserView td,
+    .UserView th,
+    .UserView thead {
+      width: 500px;
+    }
+  }
+  
+  .UserView thead tr { 
+    position: relative;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  .UserView h2 {
+    text-align: center;
+    font-family: arial, sans-serif;
+  }
+  
+  .UserView table {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    flex-flow: column;
+    width: 120%;
+  }
+  
+  .UserView td,
+  .UserView th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .UserView tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .UserView tr:hover {
+    background-color: #52C4B9;
+  }
+  
+  .UserView th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #199087;
+    color: white;
+  } */
+
+  .UserView {
+    margin: auto;
+   /*text-align: center;
+   border:1px solid red;
+   width:55%;
+   padding:2px;*/
+   width:80%;
+   border:1.5px solid rgb(221, 211, 211);
+   margin-top:1px;
+   margin-bottom:15px;
+ }
+
+ /* .UserView tbody tr{
+   height:5px;
+ }
+ */
+.UserView h4{
+ color:white;
+ text-align: center;
+ box-shadow: 0 2px 3px #ccc;
+ border: 1px solid red;
+ padding: 6px;
+ box-sizing: border-box;
+ background-color:black;
+ /* height:40px;  */
+ /* width:50%; */
+ margin-top:0px;
+}

@@ -1,0 +1,29 @@
+.CategoryData {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 2px solid #2E4158;
+    padding: auto;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+}
+
+.CategoryData h4{
+    margin: 20px auto;
+    color:rgb(255, 255, 255);
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #2E4158;
+}
+
+@media (min-width : 600px){
+    .CategoryData {
+        width: 500px;
+    }
+}

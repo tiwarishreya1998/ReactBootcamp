@@ -1,0 +1,49 @@
+.Toolbar{
+    height: 56px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 20px;
+    box-sizing:  border-box;
+    z-index:90;
+
+
+}
+.Toolbar nav{
+    height: 100%;
+    
+}
+.Logo{
+    height:80%;
+}
+@media(max-width:499px){
+    .DesktopOnly{
+        display:none;
+    }
+}
+.Search{
+    width:30%;
+    height:60%;
+    margin:0 auto; 
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: black;
+}
+
+/* .Button{
+    color: cornflowerblue;
+    background-color:rgb(22, 192, 149);
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+} */
