@@ -8,7 +8,8 @@ import {connect} from 'react-redux'
 import Spinner from '../../../component/UI/Spinner/Spinner';
 import {Redirect} from 'react-router-dom';
 import {updateObject,checkValidity} from '../../../shared/utility';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
+
 const Login=props=>{
 
     const [loginForms,setLoginForms]=useState({
@@ -80,6 +81,12 @@ const Login=props=>{
     };
 
 
+ 
+    const forgotHandler=()=>{
+        props.history.replace("/forgotPassword")
+        
+    }
+
     
         const formElementsArray=[];
         for(let key in loginForms){
@@ -130,14 +137,15 @@ const Login=props=>{
               {form}
                 <div className={classes.FormField}>
                     <button className={classes.FormField__Button} onClick={switchAuthModeHandler}>Login</button> 
-                    <Link to="/forgotPassword" className={classes.FormField__Link}>Forgot Password ?</Link>
+                    {/* <Link to="/forgotPassword" className={classes.FormField__Link}>Forgot Password ?</Link> */}
+                    <button onClick={forgotHandler}>forgot</button>
+                    
                 </div>
                 
             </form>
           </div>
         )
     }
-
 
 const mapStateToProps=state=>{
     return{

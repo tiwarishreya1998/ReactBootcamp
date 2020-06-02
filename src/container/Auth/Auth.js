@@ -1,15 +1,15 @@
 import React from 'react';
-import Register from './Register/Register';
+//import Register from './Register/Register';
 import classes from '../../container/Auth/Auth.module.css'
-import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
-import Login from './Login/Login';
-
+import  {NavLink} from 'react-router-dom';
+//import Login from './Login/Login';
+//import Aux from '../../hoc/Aux/Aux';
 const Auth=()=>{
 
     
 
     return(
-        <Router>
+        
         <div className={classes.Auth}>
           
           <div className={classes.Auth__Form}>
@@ -23,14 +23,11 @@ const Auth=()=>{
                    className={classes.FormTitle__Link}>Sign Up</NavLink>
               </div>            
 
-              <Route exact path="/sign-up" component={Register}>
-              </Route>
-              <Route path="/sign-in" component={Login}>
-              </Route>
+            
           </div>
 
         </div>
-      </Router>
+        
         
     );
 }

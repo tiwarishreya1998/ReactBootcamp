@@ -68,7 +68,7 @@ const UpdateProfile =props=>{
                         id:key,
                         config:params[key],
                     });
-                };
+            };
 
 
 

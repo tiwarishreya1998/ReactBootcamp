@@ -1,0 +1,28 @@
+.FetchAddress{
+    margin: auto;
+   /*text-align: center;
+   border:1px solid red;
+   width:55%;
+   padding:2px;*/
+   width:80%;
+   border:1.5px solid rgb(221, 211, 211);
+   margin-top:1px;
+   margin-bottom:15px;
+ }
+
+ /* .UserView tbody tr{
+   height:5px;
+ }
+ */
+.FetchAddress h4{
+ color:white;
+ text-align: center;
+ box-shadow: 0 2px 3px #ccc;
+ border: 1px solid red;
+ padding: 6px;
+ box-sizing: border-box;
+ background-color:black;
+ /* height:40px;  */
+ /* width:50%; */
+ margin-top:0px;
+}

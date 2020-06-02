@@ -8,4 +8,8 @@ export {
 
 export{
     fetchProfile
-} from './profile'
+} from './profile';
+
+export {
+    fetchAddress
+}from './addressCustomer';

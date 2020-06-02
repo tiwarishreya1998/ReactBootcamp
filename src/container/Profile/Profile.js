@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
-//import ViewProfile from '../../component/ViewProfile/ViewProfile';
 import {connect} from 'react-redux';
-//import * as actions from '../../store/actions/index';
-//import Spinner from '../../component/UI/Spinner/Spinner';
+//import FetchAddress from './Address/FetchAddress/FetchAddress';
 import axios from 'axios';
 import Aux from '../../hoc/Aux/Aux';
 import {Link} from 'react-router-dom';
+//import Button from '../../component/UI/Button/Button';
 
+//import UpdateProfile from '../Profile/UpdateProfile/UpdateProfile';
 const Profile=props=>{
 
     const [firstName,setFirstName] = useState("");     
     const [lastName,setLastName] = useState("");     
     const [contact,setContact] = useState(""); 
-    //const [image,setImage] = useState("");    
-   // const [loading,setLoading] = useState(false);
+
 
     const {access_token}=props;
     console.log(access_token)
@@ -34,8 +33,12 @@ const Profile=props=>{
                 });
                 },[access_token]);
         
-        
+        // let ship=null
+        // const getAddressHandler=()=>{
+        //             ship=<FetchAddress/>
+        // }
 
+    
 
         const firstNameChangeHandler = (e) => {setFirstName(e.target.value)     }      
         const lastNameChangeHandler = (e) => {setLastName(e.target.value)     }      
@@ -91,19 +94,7 @@ const Profile=props=>{
                                         <input className="form-control" readOnly="readonly" value={contact}  onChange={contactChangeHandler}/>
                                     
                                 </div>
-                               
-                                {/* <div className="form-group">
-                                    <label className="col-md-3 control-label">Password:</label>
-                                    <div className="col-md-8">
-                                        <input className="form-control" type="password" value="11111122333" />
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <label className="col-md-3 control-label">Confirm password:</label>
-                                    <div className="col-md-8">
-                                        <input className="form-control" type="password" value="11111122333" />
-                                    </div>
-                                </div> */}
+                            
                                 <div className="form-group col-md-3">
                                     <label className=" control-label"></label>
                                     </div>
@@ -112,9 +103,14 @@ const Profile=props=>{
                                     &nbsp;&nbsp;&nbsp;
                                     <button type="reset" class="btn btn-danger">Cancel</button>
                                     &nbsp;&nbsp;&nbsp; */}
-                                    <i className="fa fa-user-edit"></i>
-                                    <button type="edit" className="btn btn-info">Update Profile</button>
-                                    <Link to="/updateProfile">edit profile</Link>
+                                    
+                                    {/* <button type="edit" className="btn btn-info">Update Profile</button> */}
+                                    <Link to="/updateProfile">Edit profile</Link>
+                                    <i className="fa fa-edit"></i>
+                                    
+                                    <div>
+                                    <Link to="/fetchAddress">View Address</Link>
+                                    </div>
                                 </div>
                             </form>
                         </div>

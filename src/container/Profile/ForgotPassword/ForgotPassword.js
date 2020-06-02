@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import Spinner from '../../../component/UI/Spinner/Spinner';
-import { updateObject } from '../../../shared/utility';
 import Button from '../../../component/UI/Button/Button';
 import axios from 'axios';
 
@@ -15,17 +14,15 @@ const ForgotPassword=React.memo((props)=>{
 
 
     const inputChangedHandler=(event,paramName)=>{
-        const updatedSchedules=updateObject(params[paramName],{
-            [paramName]:updateObject(params[paramName],{
-                value:event.target.value
-            })
-        });
-        setParams(updatedSchedules);
+
+        setParams(event.target.value);
+        console.log(event.target.value)
     }
 
     const submitHandler=(event)=>{
         event.preventDefault();
-        let email=params.value
+        let email=params
+        console.log(params);
         setLoading(true);
         let fetchedData=null;
         console.log(event)
@@ -43,7 +40,7 @@ const ForgotPassword=React.memo((props)=>{
         <div>
             <form onSubmit={submitHandler}>
                 <h4>Forgot Password </h4>
-                <input type="text" placeholder="enter your email" onChange={inputChangedHandler}/>
+                <input type="text" placeholder="enter your email" value={params} onChange={inputChangedHandler}/>
                 <Button btnType="Success">Submit</Button>
             </form>
         </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Aux from '../../hoc/Aux/Aux';
 import classes from "./Home.module.css";
+import Category from "../Category/Category";
 //import HomePage from '../../component/HomePagePic/HomePagePic';
 //import homePic from '../../assests/HomePagePics/homePage.jpeg';
 
@@ -24,6 +25,7 @@ class Home extends Component {
               placeholder="SEARCH" 
             /><i className="fa fa-search"></i>
         </div> 
+        <div><Category/></div>
        
       </Aux>
     );

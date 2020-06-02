@@ -12,6 +12,12 @@ import Profile from './container/Profile/Profile';
 import ForgotPassword from './container/Profile/ForgotPassword/ForgotPassword';
 import ResetPassword from './container/Profile/ResetPassword/ResetPassword';
 import UpdateProfile from './container/Profile/UpdateProfile/UpdateProfile';
+import Register from './container/Auth/Register/Register';
+import Login from './container/Auth/Login/Login';
+import FetchAddress from './container/Profile/Address/FetchAddress/FetchAddress1';
+import UpdateAddress from './container/Profile/Address/UpdateAddress/UpdateAddress';
+import NewAddress from './container/Profile/Address/NewAddress/NewAddress';
+import Category from './container/Category/Category';
 
 const asyncAuth=asyncComponent(()=>{
   return import('./container/Auth/Auth');
@@ -26,13 +32,18 @@ const App = (props) => {
 
   let routes = (
     <Switch>
-      
+      <Route path="/newAddress" component={NewAddress}/>
+      <Route path="/updateAddress" component={UpdateAddress}/>
+      <Route path="/fetchAddress" component={FetchAddress}/>
+      <Route exact path="/sign-up" component={Register}/>              
+      <Route path="/sign-in" component={Login}/>              
       <Route path="/" exact component={Home} />
       <Route path="/auth" component={asyncAuth} />
       <Route path="/admin" component={Admin} />
       <Route path="/profile" component={Profile}/>
-      <Route path="/forgotPassword" component={ForgotPassword}/>
+      <Route path="/forgotPassword" exact component={ForgotPassword}/>
       <Route path="/resetPassword" component={ResetPassword}/>
+      <Route path="/categories" component={Category}/>
       <Redirect to="/" />
     </Switch>
   );
@@ -40,13 +51,16 @@ const App = (props) => {
   if (props.isAuthenticated) {
     routes = (
       <Switch>
+        <Route path="/updateAddress" component={UpdateAddress}/>
+        <Route path="/fetchAddress" component={FetchAddress}/>
         <Route path="/updateProfile" component={UpdateProfile}/>
         <Route path="/profile" component={Profile}/>
         <Route path="/admin" component={Admin} />
         <Route path="/logout" component={Logout} />
-        <Route path="/auth" component={asyncAuth} />
+        <Route path="/auth" exact component={asyncAuth} />
         <Route path="/" exact component={Home} />
-        
+        <Route path="/newAddress" component={NewAddress}/>
+        <Route path="/categories" component={Category}/>
         <Redirect to="/" />
       </Switch>
     );

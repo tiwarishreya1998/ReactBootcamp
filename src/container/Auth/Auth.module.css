@@ -2,7 +2,7 @@
 .Auth {
     height: 100vh;
     display: flex;
-    color: white;
+    color: rgb(255, 255, 255);
   }
   
   .Auth__Aside {
@@ -74,7 +74,7 @@
   }
   
   .FormTitle__LinkActive {
-    color: white;
+    color:#199087;
     border-bottom: 1px solid #199087;
   }
   
@@ -117,7 +117,7 @@
   }
   
   .FormField__Link {
-    color: rgb(255, 255, 255);
+    color: #199087;
     text-decoration: none;
     display: inline-block;
     border-bottom: 1.5px solid #225E62;
