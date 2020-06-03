@@ -36,13 +36,18 @@ const ForgotPassword=React.memo((props)=>{
         });
     };
 
+
+    const resetHandler=()=>{
+        props.history.push("/resetPassword");
+    }
     return(
         <div>
             <form onSubmit={submitHandler}>
                 <h4>Forgot Password </h4>
                 <input type="text" placeholder="enter your email" value={params} onChange={inputChangedHandler}/>
-                <Button btnType="Success">Submit</Button>
+                <Button btnType="Success" >Submit</Button>
             </form>
+            <Button btnType="Success" clicked={()=>resetHandler()}>Reset Password</Button>
         </div>
     );
 
