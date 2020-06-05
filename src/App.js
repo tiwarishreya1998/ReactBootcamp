@@ -17,8 +17,9 @@ import Login from './container/Auth/Login/Login';
 import FetchAddress from './container/Profile/Address/FetchAddress/FetchAddress1';
 import UpdateAddress from './container/Profile/Address/UpdateAddress/UpdateAddress';
 import NewAddress from './container/Profile/Address/NewAddress/NewAddress';
-import Category from './container/Category/Category';
-
+import Category from './container/Admin/Category/Category';
+import AddCategory from './container/Admin/Category/AddCategory/AddCategory'
+import UpdateCategory from './container/Admin/Category/UpdateCategory/UpdateCategory';
 const asyncAuth=asyncComponent(()=>{
   return import('./container/Auth/Auth');
 });
@@ -32,6 +33,7 @@ const App = (props) => {
 
   let routes = (
     <Switch>
+      <Route path="/updateCategory" component={UpdateCategory}/>
       <Route path="/newAddress" component={NewAddress}/>
       <Route path="/updateAddress" component={UpdateAddress}/>
       <Route path="/fetchAddress" component={FetchAddress}/>
@@ -44,6 +46,8 @@ const App = (props) => {
       <Route path="/forgotPassword" exact component={ForgotPassword}/>
       <Route path="/resetPassword" component={ResetPassword}/>
       <Route path="/categories" component={Category}/>
+      <Route path="/category" component={Category}/>
+      <Route path="/addCategory" component={AddCategory}/>
       <Redirect to="/" />
     </Switch>
   );
@@ -51,6 +55,9 @@ const App = (props) => {
   if (props.isAuthenticated) {
     routes = (
       <Switch>
+        <Route path="/updateCategory" component={UpdateCategory}/>
+        <Route path="/category" component={Category}/>
+        <Route path="/addCategory" component={AddCategory}/>
         <Route path="/updateAddress" component={UpdateAddress}/>
         <Route path="/fetchAddress" component={FetchAddress}/>
         <Route path="/updateProfile" component={UpdateProfile}/>

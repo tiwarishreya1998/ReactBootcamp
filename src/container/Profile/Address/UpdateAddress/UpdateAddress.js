@@ -38,7 +38,7 @@ const UpdateAddress=props=>{
             "address":address
         }
         const headers={
-            Authorization:'Bearer'+access_token
+            Authorization:'Bearer '+access_token
         }
         axios.put('http://localhost:8080/customer/profile/updateAddress/'+id,postData,{headers:headers})
         .then(response=>{

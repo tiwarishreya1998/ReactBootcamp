@@ -19,7 +19,7 @@ const Profile=props=>{
         useEffect(()=>{
             console.log(access_token)
             const headers = {
-                Authorization: 'Bearer' + access_token
+                Authorization: 'Bearer ' + access_token
                 }
                 axios.get('http://localhost:8080/customer/profile',{ headers: headers })
                 .then(response => {

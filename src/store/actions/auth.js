@@ -27,6 +27,7 @@ export const logout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('expirationDate');
     localStorage.removeItem('id');
+    localStorage.removeItem('role');
     return {
         type: actionTypes.AUTH_LOGOUT
     };
@@ -56,7 +57,7 @@ export const auth = (login) => {
                 const expirationDate = new Date(new Date().getTime() + response.data.expires_in * 1000);
                 localStorage.setItem('access_token', response.data.access_token);
                 localStorage.setItem('expirationDate', expirationDate);
-              
+                localStorage.setItem('role',login.role.value)
                 dispatch(authSuccess(response.data.access_token));
                 dispatch(checkAuthTimeout(response.data.expires_in));
             })

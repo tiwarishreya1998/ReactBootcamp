@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/utility';
 
 const initialState={
+    role:null,
     token:null,
     id:null,
     error:null,
@@ -18,6 +19,7 @@ const authStart=(state,action)=>{
 
 const authSuccess=(state,action)=>{
     return updateObject(state,{
+        role:action.role,
         token:action.access_token,
         id:action.id,
         error:null,

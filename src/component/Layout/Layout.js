@@ -21,9 +21,11 @@ const Layout =(props)=>{
 return(
 <Aux>
     <Toolbar 
+        isRole={props.isRole}
         isAuth={props.isAuthenticated}
         drawerToggleClicked={drawerToggleHandler}/>
     <SideDrawer
+        isRole={props.isRole}
         open={sideDrawerIsVisible} 
         closed={sideDrawerClosedHandler}
         isAuth={props.isAuthenticated}/>
@@ -35,7 +37,8 @@ return(
 )};
 const mapStatesToProps=state=>{
     return{
-      isAuthenticated:state.auth.token!==null
+      isAuthenticated:state.auth.token!==null,
+      isRole:state.auth.role
     };
   };
   

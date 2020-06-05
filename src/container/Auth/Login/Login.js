@@ -13,6 +13,21 @@ import {updateObject,checkValidity} from '../../../shared/utility';
 const Login=props=>{
 
     const [loginForms,setLoginForms]=useState({
+        role: {
+            elementType: "select",
+            elementConfig: {
+              options: [
+                { value: "none", displayValue: "SELECT USER TYPE" },
+                { value: "Admin", displayValue: "Admin" },
+                { value: "Seller", displayValue: "Seller" },
+                { value: "Customer", displayValue: "Customer" },
+              ],
+            },
+            value: '',
+            validation: {},            
+            valid:false,
+            touched:false
+          },
             username:{
                 elementType:'input',
                 elementConfig:

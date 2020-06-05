@@ -6,10 +6,14 @@ export {
 
 } from './auth';
 
-export{
-    fetchProfile
-} from './profile';
+// export{
+//     fetchProfile
+// } from './profile';
 
 export {
     fetchAddress
 }from './addressCustomer';
+
+export {
+    fetchCategories
+} from './categories';

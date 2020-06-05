@@ -9,6 +9,7 @@ const Home =props=>{
   
     return (
       <Aux>
+        {props.isAuthenticated && localStorage.getItem('role')==='Customer' ?<div><Category/></div>:null}
         <div className={classes.Container}>
             {/* <h1>Welcome and Enjoy</h1>
             <input 
@@ -17,6 +18,7 @@ const Home =props=>{
               placeholder="SEARCH"
             /> */}
         </div> 
+        
         <div className={classes.Text}>  
             <h1>Welcome and Enjoy</h1>
             <input 
@@ -26,7 +28,7 @@ const Home =props=>{
             /><i className="fa fa-search"></i>
         </div> 
         
-        <div><Category isAuth={props.isAuthenticated}/></div>
+        
        
       </Aux>
     );
@@ -34,7 +36,8 @@ const Home =props=>{
 
 const mapStatesToProps=state=>{
   return{
-    isAuthenticated:state.auth.token!==null
+    isAuthenticated:state.auth.token!==null,
+    
   };
 };
 
