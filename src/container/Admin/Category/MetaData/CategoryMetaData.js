@@ -20,7 +20,7 @@ const Category = ({ access_token }) => {
     
     useEffect(() => {
         const headers = {
-            Authorization: "Bearer" + access_token,
+            Authorization: "Bearer " + access_token,
         };
         axios.get("http://localhost:8080/category/all",{ headers: headers})
             .then(response => {

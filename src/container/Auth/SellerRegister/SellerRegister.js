@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import classes from '../Auth.module.css';
-import { updateObject, checkValidity } from '../../../Shared/Utility';
-import Input from '../../../UI/Input/Input';
-import Spinner from '../../../UI/Spinner/Spinner';
-import axios from "axios";
-
+import { updateObject, checkValidity } from '../../../shared/utility';
+import Input from '../../../component/UI/Input/Input';
+import Spinner from '../../../component/UI/Spinner/Spinner';
+// import axios from "axios";
+// import Button from '../../../component/UI/Button/Button';
+import SellerAddress from './SellerAddress';
 const SellerRegister = (props) => {
-  const [register, setRegister] = useState({
+  const [signup, setSignup] = useState({
     // signupAs: {
     //   elementType: "select",
     //   elementConfig: {
@@ -117,7 +118,7 @@ const SellerRegister = (props) => {
         isValid: false,
         touched: false,
       },
-      companyContact: {
+    companyContact: {
       elementType: "input",
       elementConfig: {
         type: "text",
@@ -143,8 +144,11 @@ const SellerRegister = (props) => {
         isValid: false,
         touched: false,
       },
+
   });
 
+
+  
   const [loading, setLoading] = useState(false);
 
   const inputChangedHandler = (event, registerData) => {
@@ -182,27 +186,38 @@ const SellerRegister = (props) => {
     />
   ));
 
+  const [mydata,setMyData]=useState("");
+  const [dataAdded,setDataAdded]=useState(false)
   const submitHandler=(event)=>{
     event.preventDefault();
     setLoading(true);
     const registerData={};
-    for (let key in register) {
-        registerData[key] = register[key].value;
+    for (let key in signup) {
+        registerData[key] = signup[key].value;
       }
     console.log(registerData)
+    localStorage.setItem("registerData",registerData);
+    setMyData(registerData);
+
+    setDataAdded(true);
     let responseData=null;
-    responseData=axios.post("http://localhost:8080/register/seller",registerData);
-    responseData.then((response)=>{
-        setLoading(false);
-        alert(response.data)
-    })
-    .catch((error)=>{
-        setLoading(false);
-        console.log(error);
-    });
+
+    // responseData=axios.post("http://localhost:8080/register/seller",registerData);
+    // responseData.then((response)=>{
+    //     setLoading(false);
+    //     alert(response.data)
+    // })
+    // .catch((error)=>{
+    //     setLoading(false);
+    //     console.log(error);
+    // });
+
 
 };
- 
+
+ if(dataAdded){
+   return <SellerAddress pastData={mydata}/>
+ }
 
   if (loading) {
     form = <Spinner />;

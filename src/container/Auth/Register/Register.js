@@ -5,7 +5,8 @@ import Spinner from '../../../component/UI/Spinner/Spinner';
 import axios from 'axios';
 import {updateObject,checkValidity} from '../../../shared/utility';
 import {Link} from 'react-router-dom';
-
+//import SellerRegister from '../SellerRegister/SellerRegister';
+import Button from '../../../component/UI/Button/Button';
 const Register =(props)=>{
 
     const [register,setRegister]=useState({
@@ -133,6 +134,9 @@ const Register =(props)=>{
     console.log("this is passs",register.password.value);
     console.log("this is con passs",register.confirmPassword.value);
 
+    const sellerHandler=()=>{
+      props.history.push('/sellerRegister')
+    }
 
     const submitHandler=(event)=>{
         event.preventDefault();
@@ -185,6 +189,7 @@ const Register =(props)=>{
                   <Link to="/sign-in" className={classes.FormField__Link}> I'm already member</Link>
                 </div>            
             </form>
+            <Button btnType="Success" clicked={sellerHandler}>Register as seller?</Button>
         </div>
     );
 

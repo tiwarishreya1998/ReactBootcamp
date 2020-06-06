@@ -7,7 +7,7 @@ import UserView from '../../component/Admin/UserView';
 import axios from 'axios';
 import Button from '../../component/UI/Button/Button';
 import classes from './Admin.module.css';
-
+import {connect} from 'react-redux';
 const Admin=React.memo((props)=>{
     const [params,setParams]=useState({
         role:{
@@ -63,7 +63,7 @@ const Admin=React.memo((props)=>{
           },
 
     });
-
+    const{access_token}=props;
     const [loading,setLoading]=useState(false);
     const [users,setUsers]=useState([]);
 
@@ -72,7 +72,9 @@ const Admin=React.memo((props)=>{
         console.log("Param in submit : ", params);
         setLoading(true)
         let result = null;
-    
+        const headers = {
+            Authorization: 'Bearer ' + access_token
+        }
         const paramData = {};
     
         let query = "?";
@@ -96,10 +98,10 @@ const Admin=React.memo((props)=>{
     
         let fetchedData = null;    
         if (paramData.role === "seller") {
-            fetchedData = axios.get("http://localhost:8080/admin/seller"+query)
+            fetchedData = axios.get("http://localhost:8080/admin/seller"+query,{headers:headers})
             setLoading(false)
         } else {
-            fetchedData = axios.get("http://localhost:8080/admin/customer"+query)
+            fetchedData = axios.get("http://localhost:8080/admin/customer"+query,{headers:headers})
             setLoading(false)
         }
     
@@ -173,4 +175,11 @@ const Admin=React.memo((props)=>{
         </Aux>
     );
 })
-export default Admin;
+
+const mapStateToProps=state=>{
+    return{
+        access_token:state.auth.token
+
+    }
+}
+export default connect(mapStateToProps)(Admin);

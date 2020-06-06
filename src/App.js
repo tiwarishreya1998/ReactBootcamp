@@ -8,18 +8,28 @@ import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import classes from './App.module.css';
 import Home from './container/Home/Home';
 import Logout from './container/Auth/Logout/Logout';
-import Profile from './container/Profile/Profile';
-import ForgotPassword from './container/Profile/ForgotPassword/ForgotPassword';
-import ResetPassword from './container/Profile/ResetPassword/ResetPassword';
-import UpdateProfile from './container/Profile/UpdateProfile/UpdateProfile';
+import Profile from './container/CustomerProfile/Profile';
+import ForgotPassword from './container/CustomerProfile/ForgotPassword/ForgotPassword';
+import ResetPassword from './container/CustomerProfile/ResetPassword/ResetPassword';
+import UpdateProfile from './container/CustomerProfile/UpdateProfile/UpdateProfile';
 import Register from './container/Auth/Register/Register';
 import Login from './container/Auth/Login/Login';
-import FetchAddress from './container/Profile/Address/FetchAddress/FetchAddress1';
-import UpdateAddress from './container/Profile/Address/UpdateAddress/UpdateAddress';
-import NewAddress from './container/Profile/Address/NewAddress/NewAddress';
+import FetchAddress from './container/CustomerProfile/Address/FetchAddress/FetchAddress1';
+import UpdateAddress from './container/CustomerProfile/Address/UpdateAddress/UpdateAddress';
+import NewAddress from './container/CustomerProfile/Address/NewAddress/NewAddress';
 import Category from './container/Admin/Category/Category';
 import AddCategory from './container/Admin/Category/AddCategory/AddCategory'
 import UpdateCategory from './container/Admin/Category/UpdateCategory/UpdateCategory';
+import MetaData from './container/Admin/Category/MetaData/MetaData';
+import AddMetadata from './container/Admin/Category/MetaData/AddMetadata';
+import ViewMetaData from './container/Admin/Category/MetaData/ViewMetaData';
+import CategoryMetaData from './container/Admin/Category/MetaData/CategoryMetaData';
+import AddProduct from './container/SellerProduct/AddProduct/AddProduct';
+import FetchProduct from './container/SellerProduct/FetchProduct/FetchProduct';
+import UpdateProduct from './container/SellerProduct/UpdateProduct/UpdateProduct';
+import Product from './container/Admin/Product/Product';
+import SellerRegister from './container/Auth/SellerRegister/SellerRegister';
+import ProfileSeller from './container/SellerProfile/Profile';
 const asyncAuth=asyncComponent(()=>{
   return import('./container/Auth/Auth');
 });
@@ -33,6 +43,16 @@ const App = (props) => {
 
   let routes = (
     <Switch>
+      <Route path="/sellerProfile" component={ProfileSeller}/>
+      <Route path="/sellerRegister" component={SellerRegister}/>
+      <Route path="/viewProduct" component={Product}/>
+      <Route path="/addProduct" component={AddProduct}/>
+      <Route path="/fetchProduct" component={FetchProduct}/>
+      <Route path="/updateProduct" component={UpdateProduct}/>
+      <Route path="/addMetadata" component={AddMetadata}/>
+      <Route path="/viewMetadata" component={ViewMetaData}/>
+      <Route path="/addMetadataValues" component={CategoryMetaData}/>
+      <Route path="/metaData" component={MetaData}/>
       <Route path="/updateCategory" component={UpdateCategory}/>
       <Route path="/newAddress" component={NewAddress}/>
       <Route path="/updateAddress" component={UpdateAddress}/>
@@ -55,6 +75,15 @@ const App = (props) => {
   if (props.isAuthenticated) {
     routes = (
       <Switch>
+        <Route path="/sellerProfile" component={ProfileSeller}/>
+        <Route path="/sellerRegister" component={SellerRegister}/>
+        <Route path="/viewProduct" component={Product}/>
+        <Route path="/addProduct" component={AddProduct}/>
+        <Route path="/fetchProduct" component={FetchProduct}/>
+        <Route path="/updateProduct" component={UpdateProduct}/>
+        <Route path="/addMetadata" component={AddMetadata}/>
+        <Route path="/viewMetadata" component={ViewMetaData}/>
+        <Route path="/addMetadataValues" component={CategoryMetaData}/>
         <Route path="/updateCategory" component={UpdateCategory}/>
         <Route path="/category" component={Category}/>
         <Route path="/addCategory" component={AddCategory}/>
@@ -68,6 +97,7 @@ const App = (props) => {
         <Route path="/" exact component={Home} />
         <Route path="/newAddress" component={NewAddress}/>
         <Route path="/categories" component={Category}/>
+        <Route path="/metaData" component={MetaData}/>
         <Redirect to="/" />
       </Switch>
     );

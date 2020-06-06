@@ -33,9 +33,11 @@ const Category =props=>{
 
 
     const metadataClick=(filedValuesSet)=>{
-        filedValuesSet.map((item)=>
-        <div>{item.filedValuesSet[item].value.split(',')}</div>)
+        filedValuesSet.map(field=>{
+            console.log(Object.keys(field))
+            console.log(Object.values(field))})
     }
+
     return(
     <>
         
@@ -67,7 +69,7 @@ const Category =props=>{
     </table>
     <div className="container" style={{width:"20%",border:"2px solid black"}}>
         <div><Button btnType="Success" clicked={()=>addCategoryHandler()}>Add category</Button>
-        <Button btnType="Success" clicked={()=>updateCategoryHandler()}>Updatecategory</Button></div>
+        <Button btnType="Success" clicked={()=>updateCategoryHandler()}>Update category</Button></div>
         </div>
        
         </>
