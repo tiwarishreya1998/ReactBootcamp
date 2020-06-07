@@ -32,11 +32,11 @@ const Category =props=>{
     },[access_token])
 
 
-    const metadataClick=(filedValuesSet)=>{
-        filedValuesSet.map(field=>{
-            console.log(Object.keys(field))
-            console.log(Object.values(field))})
-    }
+    // const metadataClick=(filedValuesSet)=>{
+    //     filedValuesSet.map(field=>{
+    //         console.log(Object.keys(field))
+    //         console.log(Object.values(field))})
+    // }
 
     return(
     <>
@@ -61,7 +61,8 @@ const Category =props=>{
                     <td>{category.category.name}</td>
                     <td>{category.category.parentId ? category.category.parentId.name : 'No data'}</td>
                     <td>{category.childCategory.length > 0 ? category.childCategory.map((c) => <div key={c.id}>{c.name}<br /></div>) : 'No data'}</td>
-                    <td>{category.filedValuesSet.length > 0 ? <button type="submit" className="btn btn-primary" onClick={() => metadataClick(category.filedValuesSet)} >Metadata</button> : 'No data'}</td>
+                    {/* <td>{category.filedValuesSet.length > 0 ? <button type="submit" className="btn btn-primary" onClick={() => metadataClick(category.filedValuesSet)} >Metadata</button> : 'No data'}</td> */}
+                    <td>{category.filedValuesSet.length > 0 ? category.filedValuesSet.map((field)=>(<p>{Object.keys(field)}:{Object.values(field)}</p>)): 'No data'}</td>
                     {/* <td><button type="submit" className="btn btn-success" onClick={() => updateClick(category.category.id)} >Update</button></td> */}
                 </tr>
             ))} 

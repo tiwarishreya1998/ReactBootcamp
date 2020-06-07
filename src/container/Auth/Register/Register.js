@@ -181,6 +181,8 @@ const Register =(props)=>{
 
     return(
       <div className={classes.FormCenter}>
+        <div className={classes.RegisterData}>
+      <h1><i className="fa fa-user-plus">Customer Registration</i></h1>
             <form onSubmit={submitHandler} className={classes.FormFields}>              
                   {form}  
                 <div className={classes.FormField}>
@@ -190,6 +192,7 @@ const Register =(props)=>{
                 </div>            
             </form>
             <Button btnType="Success" clicked={sellerHandler}>Register as seller?</Button>
+        </div>
         </div>
     );
 

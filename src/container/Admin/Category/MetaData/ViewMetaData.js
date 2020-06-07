@@ -21,19 +21,20 @@ const ViewMetaData=props=>{
         });
     },[access_token]);
     return(
-        <div className="container fluid" style={{marginTop: "5%",marginBottom:"5%",width:"50%"}}>
+        <div className="container fluid" style={{marginTop: "5%",border:"2px solid black",marginBottom:"5%",width:"50%"}}>
 
         <h1>VIEW METADATA</h1>
-        <ul>
+        <ul style={{fontSize:"20px"}}>
         {metadata.map((item)=>(
-             <li key={item.id}>
-                 id:{item.id}
+             <li  key={item.id}>
+                Metadata id:{item.id}
                  <br/>
-                 name:{item.name}
+                Metadata name:{item.name}
              </li>
 
          ))}
         </ul>
+        
         
         </div>
     )

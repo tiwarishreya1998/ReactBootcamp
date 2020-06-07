@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import Layout from './component/Layout/Layout';
 import Admin from './container/Admin/Admin';
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { Route, Switch, withRouter, Redirect, Router } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from './store/actions/index';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
@@ -30,6 +30,7 @@ import UpdateProduct from './container/SellerProduct/UpdateProduct/UpdateProduct
 import Product from './container/Admin/Product/Product';
 import SellerRegister from './container/Auth/SellerRegister/SellerRegister';
 import ProfileSeller from './container/SellerProfile/Profile';
+import ProductCustomer from './container/Category/ProductCustomer';
 const asyncAuth=asyncComponent(()=>{
   return import('./container/Auth/Auth');
 });
@@ -43,6 +44,7 @@ const App = (props) => {
 
   let routes = (
     <Switch>
+      <Route path="/categoryProduct" component={ProductCustomer}/>
       <Route path="/sellerProfile" component={ProfileSeller}/>
       <Route path="/sellerRegister" component={SellerRegister}/>
       <Route path="/viewProduct" component={Product}/>

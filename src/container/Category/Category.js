@@ -74,7 +74,7 @@ const Category =props=>{
         
     }
     const productViewHandler=()=>{
-        props.history.push("/category/"+latestId);
+        props.history.push("http://localhost:3000/categoryProduct/"+latestId);
         sidebarClose();
     }
 
@@ -97,7 +97,7 @@ const Category =props=>{
 
         })
         .catch((error)=>{
-            console.log(error.response.data.error);
+            console.log(error);
         });
         // onFetchCategories(access_token,parId);
     }

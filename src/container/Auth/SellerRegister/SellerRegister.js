@@ -4,7 +4,7 @@ import { updateObject, checkValidity } from '../../../shared/utility';
 import Input from '../../../component/UI/Input/Input';
 import Spinner from '../../../component/UI/Spinner/Spinner';
 // import axios from "axios";
-// import Button from '../../../component/UI/Button/Button';
+import Button from '../../../component/UI/Button/Button';
 import SellerAddress from './SellerAddress';
 const SellerRegister = (props) => {
   const [signup, setSignup] = useState({
@@ -229,7 +229,7 @@ const SellerRegister = (props) => {
       <p>Please fill in all the required fields to create a new account.</p>
       <form onSubmit={submitHandler}>
         {form}
-        <button type="submit" data-toggle="modal" data-target="#myModal">Signup</button>
+        <Button btnType="Success" >Add Company Address</Button>
       </form>
     </div>
   );

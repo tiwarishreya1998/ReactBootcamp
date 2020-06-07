@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import {connect} from 'react-redux';
 import Aux from '../../../hoc/Aux/Aux';
-import axios from 'axios';
+//import axios from 'axios';
+import classes from '../Auth.module.css';
 import Spinner from '../../../component/UI/Spinner/Spinner';
 import Input from '../../../component/UI/Input/Input';
 import {updateObject} from '../../../shared/utility'; 
@@ -123,26 +124,17 @@ const SellerAddress=props=>{
     }
         return(
             <Aux>
-                <div className="container">
-                    <h1>New Address</h1>
-                    <div className="row">
-                        <div className="col-md-9 personal-info">
-                            <h3>Address info</h3>
-
-                            <form className="row" onSubmit={submitHandler} >
-                                <div className="form-group col-lg-3">
-                                    {form}                
-                                </div>                             
+                <div className={classes.RegisterData}>
+                        <h1>Company Address</h1>
+                            <form onSubmit={submitHandler} >
                                 
-                                <div className="form-group col-md-3">
-                                    <label className=" control-label"></label>
-                                </div>
-                                    <div className="col-md-6">
-                                    <button type="edit" className="btn btn-info">Add address</button>
-                                </div>
+                                    {form}            
+                                
+                                    
+                                    <button type="edit" className="btn btn-info">Register</button>
+                              
                             </form>
-                        </div>
-                    </div>
+                        
                 </div>
             </Aux>
         );

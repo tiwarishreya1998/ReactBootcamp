@@ -13,12 +13,14 @@ const addMetadataValues=()=>{
 }
 
     return(
-        <div className="container fluid" style={{marginTop: "5%",marginBottom:"5%",width:"50%"}}>
+        <div className="container fluid" style={{marginTop: "10%",marginBottom:"5%",width:"50%"}}>
             <div className="container-fluid">
                 <div className="card" style={{marginTop:"2%",boxShadow: "1px 2px 2px grey"}}>
-                    <div className="card-body">
-                        <Button btnType="Success" clicked={addMetadata}>Add Metadata field</Button>
-                        <Button btnType="Success" clicked={viewMetadata}>View Metadata field</Button>
+                    <div>
+                        <Button btnType="Success" clicked={addMetadata}>Add Metadata field</Button></div>
+                        <div>
+                        <Button btnType="Success" clicked={viewMetadata}>View Metadata field</Button></div>
+                        <div>
                         <Button btnType="Success" clicked={addMetadataValues}>Add and Update Metadata values</Button>
                     </div>
                 </div>
