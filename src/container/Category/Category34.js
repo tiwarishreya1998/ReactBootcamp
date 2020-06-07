@@ -145,3 +145,11 @@ const mapDispatchToProps=(dispatch)=>{
     };
 };
 export default connect(mapStateToProps,mapDispatchToProps)(Category);
+
+
+
+
+
+
+
+// const imageChangeHandler = (e) => {         var file = e.target.files[0];         var reader = new FileReader();         reader.onloadend = function() {                         setImage(reader.result);         }         reader.readAsDataURL(file);     }

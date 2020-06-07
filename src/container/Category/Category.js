@@ -4,6 +4,7 @@ import Button from '../../component/UI/Button/Button';
 import {connect} from 'react-redux';
 import Backdrop from '../../component/UI/Backdrop/Backdrop';
 import classes from '../../component/SideDrawer/SideDrawer.module.css';
+import { withRouter } from 'react-router-dom';
 
 const Category =props=>{
     const[categories,setCategories]=useState([]);
@@ -11,6 +12,7 @@ const Category =props=>{
     const [backdrop,setBackdrop]=useState(false);
     const [latestId,setLatestId]=useState("");
     const{access_token}=props;
+    // console.log("message")
 
    
 
@@ -38,6 +40,7 @@ const Category =props=>{
         }
         axios.get('http://localhost:8080/customer/profile/categories',{headers:headers})
         .then(response=>{
+            console.log("my data",response.data.id);
             console.log(response.data);
             setLatestId(response.data.id)
             setCategories(response.data)
@@ -69,16 +72,22 @@ const Category =props=>{
 
     
     const redirectHandler=()=>{
-        props.history.replace('http://localhost:3000/auth');
+        props.history.replace('auth');
         sidebarClose();
         
     }
-    const productViewHandler=()=>{
-        props.history.push("http://localhost:3000/categoryProduct/"+latestId);
+    const productViewHandler=(id)=>{
+        console.log("categoryProduct "+id)
+        // props.history.push("categoryProduct/"+id);
+        props.history.push({
+            pathname: "/categoryProduct",
+            state:id
+          });
         sidebarClose();
     }
 
     const childCategoryHandler=(access_token,latestId)=>{
+        console.log("latestid",latestId)
         let parId;
         const headers = {
             Authorization: 'Bearer ' + access_token
@@ -87,37 +96,35 @@ const Category =props=>{
         if(latestId){
             query=`?categoryId=${latestId}`;
 
-        }
+        }setLatestId(latestId)
+        console.log("child category lastest prev id", latestId)
         axios.get('http://localhost:8080/customer/profile/categories'+query,{headers:headers})
         .then((response)=>{
-            console.log(response.data[0].parentId.id);
-            parId=response.data[0].parentId.id;
-            console.log(parId);
+            console.log("child category ",response.data)
+            //setLatestId(response.data.id)
+            //console.log(response.data.id)
+            //console.log(response.data[0].parentId.id);
+            //parId=response.data[0].parentId.id;
+           //console.log(parId);
+          // setLatestId(response.data.id)
+           console.log("child catgeory lastes id ",response.data.id)
             setCategories(response.data)
+            
 
         })
         .catch((error)=>{
             console.log(error);
         });
-        // onFetchCategories(access_token,parId);
+        //onFetchCategories(access_token,parId);
     }
 
 
     let sidebarClass=["w3-sidebar w3-bar-block",classes.SideDrawer]
+    console.log(categories.length)
     return(
-        // <div className="container">
-        //     <div className="dropdown">
-        //     <button className="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categories
-        //         <span className="caret"></span>
-        //     </button>
-        //         {/* <ul className="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-        //             {categories.map((category)=>
-        //             <li role="presentation">{category.name}</li>
-        //             )}
-        //         </ul> */}
         <div>
         <Backdrop show={backdrop} clicked={sidebarClose}/>
-            <span className="w3-button w3-slarge" style={{border:"2px solid #225E62",backgroundColor:"#66DAC7"}} onClick={sidebarOpen}>
+            <span className="w3-button w3-slarge" style={{border:"solid #225E62",backgroundColor:"#66DAC7",textAlign:"center"}} onClick={sidebarOpen}>
                 Categories
             </span>
             <div className={sidebarClass.join(' ')} style={{...sidebar,overflowY:"scroll"}}id="one">
@@ -132,6 +139,7 @@ const Category =props=>{
                 className="list-group-item d-flex justify-content-between align-items-center">
                     {category.name}
                     <span onClick={()=>categoryHandler(category.id)}>
+
                         <i className="fa fa-angle-right"></i>
 
                     </span>
@@ -141,12 +149,12 @@ const Category =props=>{
             </ul>
                 )}
             {categories.length===0 && props.isAuthenticated ? (
-                <span onClick={productViewHandler}>
+                <span onClick={()=>productViewHandler(latestId)}>                    
                 <i className="fa fa eye" aria-hidden="true">view</i></span>
             ):null}
 
             {props.isAuthenticated && latestId && categories.length!==0?(
-            <span  onClick={(latestId)=>childCategoryHandler(latestId)}>
+            <span  onClick={childCategoryHandler}>
 
                 </span>
             ):null}
@@ -161,4 +169,4 @@ const mapStateToProps=state=>{
         access_token:state.auth.token
     }
 }
-export default  connect(mapStateToProps)(Category);
+export default  withRouter(connect(mapStateToProps)(Category));

@@ -77,6 +77,7 @@ const App = (props) => {
   if (props.isAuthenticated) {
     routes = (
       <Switch>
+        <Route path="/categoryProduct" component={ProductCustomer}/>
         <Route path="/sellerProfile" component={ProfileSeller}/>
         <Route path="/sellerRegister" component={SellerRegister}/>
         <Route path="/viewProduct" component={Product}/>

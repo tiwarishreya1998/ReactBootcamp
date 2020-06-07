@@ -1,0 +1,14 @@
+.Products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+.Card{
+    padding: 2%;
+  flex-grow: 1;
+  flex-basis: 16%;
+
+  display: flex;
+}
+.Image{
+    max-width: 100%;
+}

@@ -9,8 +9,9 @@ const Home =props=>{
   
     return (
       <Aux>
-        {props.isAuthenticated && localStorage.getItem('role')==='Customer' ?<div><Category/></div>:null}
+       <div className={classes.Category}> {props.isAuthenticated && localStorage.getItem('role')==='Customer' ?<div ><Category/></div>:null}</div>
         <div className={classes.Container}>
+}
             {/* <h1>Welcome and Enjoy</h1>
             <input 
               type="text"
