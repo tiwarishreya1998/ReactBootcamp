@@ -1,101 +1,149 @@
 import React, { useEffect, useState } from "react";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import profile1 from '.././../assests/HomePagePics/profile1.jpeg';
 
+const SellerProfile = props => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [companyContact, setCompanyContact] = useState("");
+    const [gst, setGst] = useState("");
+    const [companyName, setCompanyName] = useState("");
+    const [address, setAddress] = useState([]);
+    const [id, setId] = useState("");
+    // const [country,setCountry]=useState([]);
+    // const [city,setCity]=useState([]);
+    // const [state,setState]=useState([]);
+    // const [zipCode,setzipCode]=useState([])
 
-const Profile=props=>{
-    const [firstName,setFirstName] = useState("");     
-    const [lastName,setLastName] = useState("");     
-    const [companyContact,setCompanyContact] = useState("");
-    const [gst,setGst]=useState("");
-    const [companyName,setCompanyName]=useState("");
-    const [address,setAddress]=useState([])
-    const [id,setId]=useState("");
+    // const [address,setAddress]=useState([])
+
     const { access_token } = props;
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(access_token)
         const headers = {
             Authorization: 'Bearer ' + access_token
-            }
-            axios.get('http://localhost:8080/seller/profile',{ headers: headers })
+        }
+        axios.get('http://localhost:8080/seller/profile', { headers: headers })
             .then(response => {
-            console.log(response.data);
-            setId(response.data.id);
-            setFirstName(response.data.firstName);
-            setLastName(response.data.lastName);
-            setCompanyContact(response.data.companyContact);  
-            setGst(response.data.gst);
-            setCompanyName(response.data.companyName)
-            setAddress(response.data.address);
+                console.log(response.data);
+                setId(response.data.id);
+                setFirstName(response.data.firstName);
+                setLastName(response.data.lastName);
+                setCompanyContact(response.data.companyContact);
+                setGst(response.data.gst);
+                setCompanyName(response.data.companyName)
+                setAddress(response.data.address);
             })
             .catch(error => {
-            console.log(error.response.data.error);
+                console.log(error);
             });
-            },[access_token]);
+    }, [access_token]);
+
+    const idChangeHandler = (e) => { setId(e.target.value) }
+    const firstNameChangeHandler = (e) => { setFirstName(e.target.value) }
+    const lastNameChangeHandler = (e) => { setLastName(e.target.value) }
+    const companyContactChangeHandler = (e) => { setCompanyContact(e.target.value) }
+    const gstChangeHandler = (e) => { setGst(e.target.value) }
+    const companyNameChangeHandler = (e) => { setCompanyName(e.target.value) }
+    // const addressChangeHandler = (e) => { setAddress(e.target.value) }
 
 
-        
-        
 
 
-            return(
-                <div className="container" style={{widht:"50%",border:"2px solid black",padding:"auto",margin:"auto"}}>
-                
-                <h3>Personal info</h3>
 
-                            <form className="row"  >
-                                <div className="form-group col-lg-3">
-                                    <label className=" control-label">First name:</label></div>
-                                    <div>
-                                        <h2>{firstName}</h2>
-                                    </div>
-                                <br/>
-                                <div className="form-group col-lg-3 ">
-                                    <label className="control-label">Last name:</label></div>
-                                    <div>
-                                        <h4>{lastName}</h4>
-                                    </div>
-                                
-                                    <br/>
-                                <div className="form-group col-lg-3">
-                                    <label className=" control-label"> company Contact Number:</label></div>
-                                    <div>
-                                        <h4>{companyContact} </h4>                                  
-                                </div>
-                                <br/>
-                                <div className="form-group col-lg-3">
-                                    <label className=" control-label"> gst Number:</label></div>
-                                    <div>
-                                        <h4>{gst} </h4>                                   
-                                </div>
-                                <br/>
-                                <div className="form-group col-lg-3">
-                                    <label className=" control-label"> company name:</label></div>
-                                    <div>
-                                        <h4>{companyName} </h4>                                  
-                                </div>
-                                <br/>
-                                <div className="form-group col-lg-3">
-                                    <label className=" control-label"> country</label></div>
-                                    <div>
-                                        <h4>{address.country} </h4>                                   
-                                </div>
-                                <br/>
-                                <div className="form-group col-lg-3">
-                                    <label className=" control-label"> city</label></div>
-                                    <div><h4>{address.city}</h4>
-                                     
-                                    
-                                </div>
-                                <br/>
-                                <div className="form-group col-lg-3">
-                                    <label className=" control-label"> state</label></div>
-                                    <div><h4>{address.state}</h4>
-                                   
-                                </div>
-                                <br/>
-                                <div className="form-group col-lg-3">
+    return (
+        <div className="container" style={{ widht: "50%", border: "2px solid black", padding: "auto", margin: "auto" }}>
+
+            <div className="col-md-3">
+                <div className="text-center">
+                    <img src={profile1} className="avatar img-circle" alt="avatar" />
+
+                </div>
+            </div>
+            <h3>Personal info</h3>
+
+            <form className="row"  >
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">Id</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={id} onChange={idChangeHandler} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">First Name:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={firstName} onChange={firstNameChangeHandler} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">Last name:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={lastName} onChange={lastNameChangeHandler} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">Company Contact Number:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={companyContact} onChange={companyContactChangeHandler} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">GST:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={gst} onChange={gstChangeHandler} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">Company Name:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={companyName} onChange={companyNameChangeHandler} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">Country:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={address.country} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">City:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={address.city} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">State:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={address.state} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">Zipcode:</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={address.zipCode} />
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">address</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" readonly="readonly" type="text" value={address.address} />
+                </div>
+
+                {/*<div className="form-group col-lg-3">
                                     <label className=" control-label"> zipcode</label></div>
                                     <div >
                                         <h4>{address.zipcode}</h4>
@@ -106,84 +154,24 @@ const Profile=props=>{
                                 <div className="form-group col-lg-3">
                                     <label className=" control-label"> address</label></div>
                                     <div><h4>{address.address}</h4>
-                                        
-                                    
-                                </div>
-                                <br/>                                                        
-                                <div className="form-group col-md-3">
-                                    <label className=" control-label"></label>
-                                    </div>
-                                    <div className="col-md-6">
-                                    
-                                    {/* <Link to="/updateProfile">Edit profile</Link> */}
-                                    <i className="fa fa-edit"></i>
-                                    
-                                    <div>
-                                    {/* <Link to="/fetchAddress">View Address</Link> */}
-                                    </div>
-                                </div>
-                            </form>
+                                         */}
 
-                            </div>
+                {/* </div> */}
+                <br />
 
+                <div class="col-md-12">
+                    <Link to="/updateSellerProfile"><button type="edit" class="btn btn-info">Update Profile</button></Link>
+                </div>
 
+                
+            </form>
 
-
-
-                // <div>
-                //     <h4>Fetched Product</h4>
-                //     <div className="row" >
-                //         <div className="col mb-3" >
-                //             <div className="card-body" ></div>
-                //             <center> <table className="table table-hover table-responsive-sm" style={{ width: "auto" }} >
-                //                 <thead className="thead-dark">
-                //                     <tr>
-                //                         <th scope='col'>id</th>
-                //                         <th scope='col'>firstname</th>
-                //                         <th scope='col'>lastName</th>
-                //                         <th scope='col'>companycontact</th>
-                //                         <th scope='col'>gst</th>
-                //                         <th scope='col'>company name</th>
-                //                         <th scope='col'>country</th>
-                //                         <th scope='col'>city</th>
-                //                         <th scope='col'>state</th>
-                //                         <th scope='col'>zipcode</th>
-                //                         <th scope='col'>address</th>
-                //                         <th scope='col'>#</th>
-                //                     </tr>
-                //                 </thead>
-                //                 <tbody>
-
-                //                         <tr key={id}>
-                //                             <th scope="row">{id}</th>
-                //                             <td>{firstName}</td>
-                //                             <td>{lastName}</td>
-                //                             <td>{companyContact}</td>
-                //                             <td>{gst}</td>
-                //                             <td>{companyName}</td>
-                //                             {address.map(address=>(
-                //                             <td>{address.country}</td>
-                //                             <td>{address.city}</td>
-                //                             <td>{address.state}</td>
-                //                             <td>{address.zipcode}</td>
-                //                             <td>{address.address}</td>))}
-                                            
-                //                         </tr>
-                     
-                //                 </tbody>
-                //             </table>
-                //             </center>
-                //             <Button btnType="Success"
-                //             clicked={() => updateProductHandler()}>
-                //             Update Product</Button>
-                //         </div>
-                //     </div>
-                // </div>
-            )
+        </div>
+    )
 }
 const mapStateToProps = state => {
     return {
         access_token: state.auth.token
     }
 }
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(SellerProfile);

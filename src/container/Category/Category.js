@@ -55,11 +55,12 @@ const Category =props=>{
 
     const sidebarOpen=()=>{
         setSidebar({
-            backgroundColor:"#66DAC7",
+            
             display:'inline',
             width:"300px",
             height:"1000px",
             marginTop:"22%",
+            position:"absolute"
         });
         setBackdrop(true);
         onFetchCategories(access_token);
@@ -124,10 +125,10 @@ const Category =props=>{
     return(
         <div>
         <Backdrop show={backdrop} clicked={sidebarClose}/>
-            <span className="w3-button w3-slarge" style={{border:"solid #225E62",backgroundColor:"#66DAC7",textAlign:"center"}} onClick={sidebarOpen}>
+            <span className="w3-button w3-slarge" style={{border:"solid #225E62",textAlign:"center",marginTop:"0px",backgroundColor:" rgb(173, 230, 218)"}} onClick={sidebarOpen}>
                 Categories
             </span>
-            <div className={sidebarClass.join(' ')} style={{...sidebar,overflowY:"scroll"}}id="one">
+            <div className={sidebarClass.join(' ')} style={{...sidebar,overflowY:"scroll",maxHeight:"100vh"}}id="one">
             <Button btnType="Success" clicked={sidebarClose}>close</Button>
 
 
@@ -150,7 +151,7 @@ const Category =props=>{
                 )}
             {categories.length===0 && props.isAuthenticated ? (
                 <span onClick={()=>productViewHandler(latestId)}>                    
-                <i className="fa fa eye" aria-hidden="true">view</i></span>
+                <i className="fas fa eye" aria-hidden="true">See Products</i></span>
             ):null}
 
             {props.isAuthenticated && latestId && categories.length!==0?(

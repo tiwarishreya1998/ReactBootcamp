@@ -142,7 +142,7 @@ const AddProduct=props=>{
                         <div className="col-md-12 address-info">
                             <h4>fill your Product details:</h4>
 
-                            <form class="row" onSubmit={submitHandler} >
+                            <form className="row" onSubmit={submitHandler} >
                                 <div className="row form-group col-lg-9">
                                     {form}
                                     <select id="categoryId" className="form-control" size="0" onChange={categoryChangeHandler} >

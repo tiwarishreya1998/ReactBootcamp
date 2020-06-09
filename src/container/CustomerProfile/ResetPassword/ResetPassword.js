@@ -4,7 +4,7 @@ import Spinner from '../../../component/UI/Spinner/Spinner';
 import Button from '../../../component/UI/Button/Button';
 import axios from 'axios';
 import Input from '../../../component/UI/Input/Input';
-
+import {Link} from 'react-router-dom'
 const ResetPassword=props=>{
 
     const [params,setParams]=useState({
@@ -108,7 +108,7 @@ const ResetPassword=props=>{
                 <input type="text" placeholder="enter the token" onChange={inputChangedHandler}>Token</input>
                 <input type="password" placeholder="enter the password" onChange={inputChangedHandler}>Password</input>
                 <input type="password" placeholder="enter the confirmed password " onChange={inputChangedHandler}>Confirm Password</input> */}
-                <Button btnType="Success">Reset</Button>
+                <Link to="/profile">"<Button btnType="Success">Reset</Button></Link>
             </form>
         </div>
     )

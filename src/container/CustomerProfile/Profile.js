@@ -5,7 +5,7 @@ import axios from 'axios';
 import Aux from '../../hoc/Aux/Aux';
 import {Link} from 'react-router-dom';
 //import Button from '../../component/UI/Button/Button';
-
+import profile from '../../assests/HomePagePics/profile.jpeg';
 //import UpdateProfile from '../Profile/UpdateProfile/UpdateProfile';
 const Profile=props=>{
 
@@ -54,26 +54,24 @@ const Profile=props=>{
                         {/* <!-- left column --> */}
                         <div className="col-md-3">
                             <div className="text-center">
-                                <img src="//placehold.it/100" className="avatar img-circle" alt="avatar" />
-                                <h6>Upload a different photo...</h6>
-
-                                <input type="file" className="form-control" />
+                                <img src={profile} className="avatar img-circle" alt="avatar" />
+                                
                             </div>
                         </div>
 
                         
                         <div className="col-md-9 personal-info">
-                            <div className="alert alert-info">
+                            {/* <div className="alert alert-info">
                                 <i className="fa fa-coffee"></i>
                                 Password <strong> must contain</strong> 8-15 characters with:
                                 <br/>atleast one special symbol
                                 <br/>atleast one uppercase letter
                                 <br/>atleast one lowercase letter
                                 <br/>atleast one numeric digit.
-                        </div>
+                        </div> */}
 
                             <h3>Personal info</h3>
-
+                            
                             <form className="row"  >
                                 <div className="form-group col-lg-3">
                                     <label className=" control-label">First name:</label></div>
@@ -99,13 +97,7 @@ const Profile=props=>{
                                     <label className=" control-label"></label>
                                     </div>
                                     <div className="col-md-6">
-                                    {/* <button type="button" class="btn btn-success">Save Changes</button>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <button type="reset" class="btn btn-danger">Cancel</button>
-                                    &nbsp;&nbsp;&nbsp; */}
-                                    
-                                    {/* <button type="edit" className="btn btn-info">Update Profile</button> */}
-                                    <Link to="/updateProfile">Edit profile</Link>
+                                        <Link to="/updateProfile">Edit profile</Link>
                                     <i className="fa fa-edit"></i>
                                     
                                     <div>
@@ -123,22 +115,11 @@ const Profile=props=>{
     )};
 const mapStateToProps=state=>{
     return{
-        // profile:state.profile.profileDetails,
-        // loading:state.profile.loading,
-        
-        // firstName:state.profile.firstName,
-        // lastName:state.profile.lastName,
-        // contact:state.profile.contact,
-        // active:state.profile.active,
+       
         access_token:state.auth.token
-        //id:state.auth.id
+       
     };
 };
 
-// const mapDispatchToProps=dispatch=>{
-//     return{
-//         onFetchProfile:()=>dispatch(actions.fetchProfile())
-//     };
-// };
 
 export default connect(mapStateToProps)(Profile);

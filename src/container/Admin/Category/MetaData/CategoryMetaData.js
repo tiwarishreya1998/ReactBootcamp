@@ -69,7 +69,7 @@ const Category = ({ access_token }) => {
             "categoryId": catId,
             "filedIdValues": filedIdValues 
         }
-        axios.post('http://localhost:8080/metadata/add',data,{ headers: headers })
+        axios.post('http://localhost:8080/categoryMetadata/add',data,{ headers: headers })
             .then(response => {
                 console.log(response.data);
                 setSuccess(true);

@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import Layout from './component/Layout/Layout';
 import Admin from './container/Admin/Admin';
-import { Route, Switch, withRouter, Redirect, Router } from "react-router-dom";
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from './store/actions/index';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
@@ -31,6 +31,10 @@ import Product from './container/Admin/Product/Product';
 import SellerRegister from './container/Auth/SellerRegister/SellerRegister';
 import ProfileSeller from './container/SellerProfile/Profile';
 import ProductCustomer from './container/Category/ProductCustomer';
+import CategoryCustomer from './container/Category/Category';
+import UpdateCustomerPassword from './container/CustomerProfile/UpdateCustomerPassword/UpdateCustomerPassword';
+import SellerProfileUpdate from './container/SellerProfile/SellerProfileUpdate/SellerProfileUpdate';
+import SellerUpdatePassword from './container/SellerProfile/SellerUpdatePass/SellerUpdatePassword';
 const asyncAuth=asyncComponent(()=>{
   return import('./container/Auth/Auth');
 });
@@ -77,6 +81,10 @@ const App = (props) => {
   if (props.isAuthenticated) {
     routes = (
       <Switch>
+        <Route path="/categoryCustomer" component={CategoryCustomer}/>
+        <Route path="/updateSellerPassword" component={SellerUpdatePassword}/>
+        <Route path="/updateSellerProfile" component={SellerProfileUpdate}/>
+        <Route path="/customerPassword" component={UpdateCustomerPassword}/>
         <Route path="/categoryProduct" component={ProductCustomer}/>
         <Route path="/sellerProfile" component={ProfileSeller}/>
         <Route path="/sellerRegister" component={SellerRegister}/>

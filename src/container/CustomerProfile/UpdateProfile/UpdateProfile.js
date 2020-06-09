@@ -5,7 +5,8 @@ import axios from 'axios';
 import Spinner from '../../../component/UI/Spinner/Spinner';
 import Input from '../../../component/UI/Input/Input';
 import {updateObject} from '../../../shared/utility'; 
-
+import {Link} from 'react-router-dom'; 
+import profile from '../../../assests/HomePagePics/profile.jpeg';
 const UpdateProfile =props=>{
     const [params,setParams]=useState({
         firstName:{
@@ -105,42 +106,45 @@ const UpdateProfile =props=>{
                     <h1>Edit Profile</h1>
                     <div className="row">
                         {/* <!-- left column --> */}
-                        <div className="col-md-3">
-                            <div className="text-center">
-                                <img src="//placehold.it/100" className="avatar img-circle" alt="avatar" />
+                        <div className="col-md-4">
+                            
+                            <img src={profile} className="avatar img-circle" alt="avatar" />
                                 <h6>Upload a different photo...</h6>
 
                                 <input type="file" className="form-control" />
                             </div>
                         </div>
-                        <div className="col-md-9 personal-info">
-                            <div className="alert alert-info">
-                                <i className="fa fa-coffee"></i>
-                                Password <strong> must contain</strong> 8-15 characters with:
-                                <br/>atleast one special symbol
-                                <br/>atleast one uppercase letter
-                                <br/>atleast one lowercase letter
-                                <br/>atleast one numeric digit.
-                        </div>
-
+                        <div className="col-md-8 personal-info">
+                        
+                        <div class="col-md-6">
                             <h3>Personal info</h3>
+                        </div>
+                        <Link to="/customerPassword">Update Password</Link>
+                                <i className="fa fa-edit"></i>
 
                             <form className="row" onSubmit={submitHandler} >
-                                <div className="form-group col-lg-3">
-                                    {form}                
-                                </div>
-                               
+                                <div className="form-group col-lg-9">
+
+                                 {form}              
                                 
-                                <div className="form-group col-md-3">
-                                    <label className=" control-label"></label>
                                 </div>
-                                    <div className="col-md-6">
-                                    <button type="edit" className="btn btn-info">Update Profile</button>
-                                </div>
+                                
+
+                                <div class="form-group col-md-3">
+                                <label class=" control-label"></label>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="edit" class="btn btn-success">Save Changes</button>
+                                &nbsp;&nbsp;&nbsp;
+                                <Link to="/profile" >  <button type="reset" class="btn btn-danger">Cancel</button></Link> 
+                               
+                            </div>
                             </form>
+                            
+                            
                         </div>
                     </div>
-                </div>
+                
             </Aux>
 
 

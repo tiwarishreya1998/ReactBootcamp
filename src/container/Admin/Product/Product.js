@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import Button from '../../../component/UI/Button/Button';
@@ -18,6 +18,7 @@ const ViewProduct=props=>{
     // },[access_token])
 
     const idChangedHandler=(event)=>{
+        event.preventDefault();
         setId(event.target.value);
     }
 

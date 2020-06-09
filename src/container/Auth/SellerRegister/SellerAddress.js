@@ -1,11 +1,12 @@
 import React,{useState} from 'react';
 import {connect} from 'react-redux';
 import Aux from '../../../hoc/Aux/Aux';
-//import axios from 'axios';
 import classes from '../Auth.module.css';
 import Spinner from '../../../component/UI/Spinner/Spinner';
 import Input from '../../../component/UI/Input/Input';
 import {updateObject} from '../../../shared/utility'; 
+import axios from 'axios';
+
 const SellerAddress=props=>{
 
     const [params,setParams]=useState({
@@ -44,13 +45,7 @@ const SellerAddress=props=>{
                 placeholder:"Enter address",
             },
         },
-        // label:{
-        //     elementType:"input",
-        //     elementConfig:{
-        //         type:"text",
-        //         placeholder:"Enter label",
-        //     },
-        // },
+      
     });
     const submitHandler = (event) => {
         event.preventDefault();
@@ -65,32 +60,19 @@ const SellerAddress=props=>{
         
         console.log("Submitted seller info is : ",registeredSeller)
         //props.onRegister(registeredSeller)
-        
+        let responseData=null;
+        responseData=axios.post("http://localhost:8080/register/seller",registeredSeller);
+        responseData.then((response)=>{
+            setLoading(false);
+            alert("Seller Successfully Registered");
+            alert(response.data)
+        })
+        .catch((error)=>{
+            setLoading(false);
+            console.log(error);
+        });
         };
-    // const submitHandler=(event)=>{
-    //     event.preventDefault();
-    //     const formData = {};
-    //         for (let key in params) {
-    //         formData[key] = params[key].value;
-    //         }
-    //     axios({
-    //         method: "POST",
-    //         url: "http://localhost:8080/customer/profile/address",
-    //         data: formData,
-    //         headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: "Bearer " + access_token,
-    //         },
-    //         })
-    //     .then((response)=>{
-    //         setLoading(false);
-    //     })
-    //     .catch((error)=>{
-    //         setLoading(false);
-    //         console.log(error);
-    //     });
-    //     };
-
+    
     const[loading,setLoading]=useState(false);
     const {access_token}=props;
 

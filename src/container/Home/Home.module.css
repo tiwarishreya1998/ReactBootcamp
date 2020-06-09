@@ -1,9 +1,9 @@
 
 .Container{
-    background: url('../../assests/HomePagePics/homePage1.jpeg') center center/cover no-repeat;
+    background: url('../../assests/HomePagePics/shopping.jpg') center center/cover no-repeat;
      padding:50px; 
     border:7px black;
-    height: 50vh;
+    height: 70vh;
     filter: blur(1px);
     -webkit-filter: blur(1px);
 }
@@ -18,7 +18,7 @@
 .Category{
     margin-left: 0px;
     padding-left: 0%;
-    
+    position: relative;
 }
 /* .Text Search{
     width:30%;
